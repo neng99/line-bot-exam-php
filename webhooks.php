@@ -39,7 +39,7 @@ if (!is_null($events['events'])) {
 					file_put_contents($fileFullSavePath,$dataBinary);
 					}
 			// Get text sent
-			$text = $text = sys_get_temp_dir();
+			$text = getcwd();
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 

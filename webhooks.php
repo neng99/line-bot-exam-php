@@ -39,14 +39,14 @@ if (!is_null($events['events'])) {
 					file_put_contents($fileFullSavePath,$dataBinary);
 					}
 			// Get text sent
-			//$text = $fileFullSavePath;
+			$text = $text = sys_get_temp_dir();
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $fileFullSavePath
+				'text' => $text
 			];
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';

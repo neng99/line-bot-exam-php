@@ -13,6 +13,7 @@ $events = json_decode($content, true);
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
+		/*
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
@@ -25,7 +26,28 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => $text
 			];
+		*/
+		// Get Image Sent
+		if($events['events'][0]['message']['type'] == 'image'){
+			$message_id= $events['events'][0]['message']['id'];
+			$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
+			$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '72c258be4626bcfdae2e89c4ea3397a8']);
+			$response = $bot->getMessageContent($event['message']['id']);
+				if ($response->isSucceeded()) {
+					$dataBinary = $response->getRawBody();
+					$fileFullSavePath = 'Test.jpg';
+					file_put_contents($fileFullSavePath,$dataBinary);
+					}
+			// Get text sent
+			//$text = $fileFullSavePath;
+			// Get replyToken
+			$replyToken = $event['replyToken'];
 
+			// Build message to reply back
+			$messages = [
+				'type' => 'text',
+				'text' => $fileFullSavePath
+			];
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [

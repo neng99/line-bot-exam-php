@@ -40,7 +40,9 @@ if (!is_null($events['events'])) {
 					file_put_contents($fileFullSavePath,$dataBinary);
 					$text = 'Success' ;
 					}else{ // Get text sent
-			$text = getcwd();}
+			$text = 'Oz';
+			//getcwd();
+				}
 			
 			// Get replyToken
 			$replyToken = $event['replyToken'];

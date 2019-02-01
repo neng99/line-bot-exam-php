@@ -35,8 +35,8 @@ if (!is_null($events['events'])) {
 			$response = $bot->getMessageContent($event['message']['id']);
 				if ($response->isSucceeded()) {
 					$dataBinary = $response->getRawBody();
-					chdir("imagesssss");
-					$fileFullSavePath = 'Test.jpg';
+				//chdir("imagesssss");
+					$fileFullSavePath = '\Local storage\Download\Test.jpg';
 					file_put_contents($fileFullSavePath,$dataBinary);
 					}
 			// Get text sent

@@ -36,7 +36,7 @@ if (!is_null($events['events'])) {
 				if ($response->isSucceeded()) {
 					$dataBinary = $response->getRawBody();
 				//chdir("imagesssss");
-					$fileFullSavePath = '\Local storage\Download\Test.jpg';
+					$fileFullSavePath = 'Test.jpg';
 					file_put_contents($fileFullSavePath,$dataBinary);
 					$text = 'Success' ;
 					}else{ // Get text sent

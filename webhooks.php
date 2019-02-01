@@ -38,9 +38,10 @@ if (!is_null($events['events'])) {
 				//chdir("imagesssss");
 					$fileFullSavePath = '\Local storage\Download\Test.jpg';
 					file_put_contents($fileFullSavePath,$dataBinary);
-					}
-			// Get text sent
-			$text = getcwd();
+					$text = 'Success' ;
+					}else{ // Get text sent
+			$text = getcwd();}
+			
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
